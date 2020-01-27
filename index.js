@@ -261,21 +261,23 @@ DiskStore.prototype.freeupspace = function (cb) {
   if (this.currentsize <= this.options.maxsize) {
   	return cb(null);
   }
-
+	
+  return null;
+	
 	// for this we need a sorted list basend on the expire date of the entries (descending)
-	var tuples = [], key;
-	for (key in this.collection) {
-		tuples.push([key, this.collection[key].expires]);
-	}
+	// var tuples = [], key;
+	// for (key in this.collection) {
+	//	tuples.push([key, this.collection[key].expires]);
+	// }
 
-	tuples.sort(function sort (a, b) {
+	// tuples.sort(function sort (a, b) {
+        //
+	//	a = a[1];
+	//	b = b[1];
+	//	return a < b ? 1 : (a > b ? -1 : 0);
+	// });
 
-		a = a[1];
-		b = b[1];
-		return a < b ? 1 : (a > b ? -1 : 0);
-	});
-
-	return this.freeupspacehelper(tuples, cb);
+	// return this.freeupspacehelper(tuples, cb);
 };
 
 /**
